@@ -1,0 +1,97 @@
+USE MASTER;
+GO
+--To disconnect all users from the database so it can be dropped if exists
+ALTER DATABASE hospital_db 
+SET SINGLE_USER 
+WITH ROLLBACK IMMEDIATE;
+GO
+
+DROP DATABASE IF EXISTS hospital_db;
+CREATE DATABASE hospital_db;
+USE hospital_db;
+GO
+
+--CREATING THE stage schema;
+CREATE SCHEMA stage;
+GO 
+--CREATING THE mart schema;
+CREATE SCHEMA matr;
+GO
+
+---------------------------------------------------------------------------------------------------------
+--Creating the stage schema tables
+--Creating table stage.payers
+DROP TABLE IF EXISTS stage.payers;
+GO
+CREATE TABLE stage.payers (
+    Id CHAR(36) PRIMARY KEY,
+    NAME VARCHAR(100),
+    ADDRESS VARCHAR(255),
+    CITY VARCHAR(100),
+    STATE_HEADQUARTERED CHAR(2),
+    ZIP VARCHAR(10),
+    PHONE VARCHAR(20)
+);
+
+--Creating tacle stage.patients
+DROP TABLE IF EXISTS stage.patients;
+GO
+CREATE TABLE stage.patients (
+    Id CHAR(36) PRIMARY KEY,
+    BIRTHDATE DATE,
+    DEATHDATE DATE,
+    PREFIX VARCHAR(10),
+    FIRST VARCHAR(100),
+    LAST VARCHAR(100),
+    SUFFIX VARCHAR(10),
+    MAIDEN VARCHAR(100),
+    MARITAL CHAR(1),
+    RACE VARCHAR(50),
+    ETHNICITY VARCHAR(50),
+    GENDER CHAR(1),
+    BIRTHPLACE VARCHAR(255),
+    ADDRESS VARCHAR(255),
+    CITY VARCHAR(100),
+    STATE VARCHAR(100),
+    COUNTY VARCHAR(100),
+    ZIP VARCHAR(10),
+    LAT DECIMAL(9,6),
+    LON DECIMAL(9,6)
+);
+
+--Creating table stage.procedure
+DROP TABLE IF EXISTS stage.procedures;
+GO
+CREATE TABLE stage.procedures (
+    START DATETIME,
+    STOP DATETIME,
+    PATIENT CHAR(36),
+    ENCOUNTER CHAR(36),
+    CODE VARCHAR(20),
+    DESCRIPTION VARCHAR(255),
+    BASE_COST INT,
+    REASONCODE VARCHAR(20),
+    REASONDESCRIPTION VARCHAR(255)
+);
+
+--Creating table stage.encounters
+DROP TABLE IF EXISTS stage.encounters;
+GO
+CREATE TABLE stage.encounters (
+  Id CHAR(36) PRIMARY KEY,
+  START DATETIME NOT NULL,
+  STOP DATETIME NOT NULL,
+  PATIENT CHAR(36) NOT NULL,
+  ORGANIZATION CHAR(36) NOT NULL,
+  PAYER CHAR(36) NOT NULL,
+  ENCOUNTERCLASS VARCHAR(50),
+  CODE VARCHAR(20),
+  DESCRIPTION VARCHAR(255),
+  BASE_ENCOUNTER_COST DECIMAL(10,2),
+  TOTAL_CLAIM_COST DECIMAL(10,2),
+  PAYER_COVERAGE DECIMAL(10,2),
+  REASONCODE VARCHAR(20),
+  REASONDESCRIPTION VARCHAR(255)
+);
+
+
