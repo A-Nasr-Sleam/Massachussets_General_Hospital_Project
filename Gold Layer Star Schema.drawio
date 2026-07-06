@@ -562,22 +562,22 @@
         <mxCell id="fact_enc__reason_description__row_n" value="reason_description" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=#ffffff;strokeColor=#0d2b39;fontColor=#213245;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;pointerEvents=1;fontStyle=0;fontSize=12;" vertex="1" parent="fact_enc__reason_description__row">
           <mxGeometry x="34" width="196" height="26" as="geometry"><mxRectangle width="196" height="26" as="alternateBounds" /></mxGeometry>
         </mxCell>
-        <mxCell id="rel0" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="patients__patient_key__row" target="fact_enc__patient_key__row">
+        <mxCell id="rel0" style="edgeStyle=none;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="patients__patient_key__row" target="fact_enc__patient_key__row">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel1" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="patients__patient_key__row" target="fact_proc__patient_key__row">
+        <mxCell id="rel1" style="edgeStyle=none;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="patients__patient_key__row" target="fact_proc__patient_key__row">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel2" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="proc_date__date_key__row" target="fact_proc__date_key__row">
+        <mxCell id="rel2" style="edgeStyle=none;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="proc_date__date_key__row" target="fact_proc__date_key__row">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel3" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="enc_date__date_key__row" target="fact_enc__date_key__row">
+        <mxCell id="rel3" style="edgeStyle=none;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="enc_date__date_key__row" target="fact_enc__date_key__row">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel4" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="payers__payer_key__row" target="fact_enc__payer_key__row">
+        <mxCell id="rel4" style="edgeStyle=none;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="payers__payer_key__row" target="fact_enc__payer_key__row">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="rel5" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fact_enc__encounter_key__row" target="fact_proc__encounter_key__row">
+        <mxCell id="rel5" style="edgeStyle=none;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="fact_enc__encounter_key__row" target="fact_proc__encounter_key__row">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="title" value="Massachusetts General Hospital &amp;#8212; Gold Layer Star Schema" style="text;html=1;align=left;verticalAlign=middle;fontSize=22;fontStyle=1;fontColor=#213245;" vertex="1" parent="1">
