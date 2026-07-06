@@ -9,9 +9,14 @@
 	which is the most general
 
 
-1-bronze.encounters, bronze.payers, and bronze.patients tables all was duplicated using the Id column.
+2-bronze.encounters, bronze.payers, and bronze.patients tables all was duplicated using the Id column.
+  But the bronze.procedures does not have unique identifier so, it was duplicated based on START, PATIENT, and CODE
+  As one patient can't have the same procedure at the same time more than once.
 
-But the bronze.procedures does not have unique identifier so, it was duplicated based on START, PATIENT, and CODE
-As one patient can't have the same procedure at the same time more than once.
+
+3-The durations of the procedures and encounters are calculated based on the difference between the START and END columns 
+  in both tables, and both measured in minutes.
+  The upper outliers in both tables were capped based on the IQR rules, The lower outliers were (less than 1) were replaced with 1
+
 
 */

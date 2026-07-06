@@ -1,0 +1,78 @@
+{
+  "name": "Massachusetts General Hospital Theme",
+  "dataColors": [
+    "#009CA6", 
+    "#003A96", 
+    "#008BB0", 
+    "#40B4BC", 
+    "#1A5296", 
+    "#76A238", 
+    "#D16103", 
+    "#595959"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#003A96",
+  "tableAccent": "#009CA6",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#FFFFFF" } },
+            "transparency": 0
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#E5E5E5" } },
+            "radius": 4
+          }
+        ],
+        "dropShadow": [
+          {
+            "show": false
+          }
+        ],
+        "title": [
+          {
+            "show": true,
+            "fontColor": { "solid": { "color": "#003A96" } },
+            "fontFamily": "Segoe UI Semibold, Arial",
+            "fontSize": 13,
+            "alignment": "Left"
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": { "solid": { "color": "#F4F6F8" } },
+            "transparency": 0
+          }
+        ]
+      }
+    },
+    "card": {
+      "*": {
+        "labels": [
+          {
+            "fontFamily": "Segoe UI, Arial",
+            "color": { "solid": { "color": "#595959" } },
+            "fontSize": 10
+          }
+        ],
+        "cardDataLabels": [
+          {
+            "fontFamily": "Segoe UI Semibold, Arial",
+            "color": { "solid": { "color": "#009CA6" } },
+            "fontSize": 24
+          }
+        ]
+      }
+    }
+  }
+}

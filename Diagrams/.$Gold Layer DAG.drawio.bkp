@@ -1,0 +1,52 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Gold Layer DAG" id="gold-layer-dag">
+    <mxGraphModel dx="1100" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="720" math="0" shadow="0" background="#f4f4f4">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Gold Layer Build DAG (dimensions &amp;#8594; facts)" style="text;html=1;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#213245;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="640" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_payers" value="dim_payers" style="ellipse;whiteSpace=wrap;html=1;fillColor=#213245;strokeColor=#19202a;fontColor=#ffffff;fontSize=12;fontStyle=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_patients" value="dim_patients" style="ellipse;whiteSpace=wrap;html=1;fillColor=#213245;strokeColor=#19202a;fontColor=#ffffff;fontSize=12;fontStyle=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="60" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_encounter_date" value="dim_encounter_date" style="ellipse;whiteSpace=wrap;html=1;fillColor=#213245;strokeColor=#19202a;fontColor=#ffffff;fontSize=12;fontStyle=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="60" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_procedure_date" value="dim_procedure_date" style="ellipse;whiteSpace=wrap;html=1;fillColor=#213245;strokeColor=#19202a;fontColor=#ffffff;fontSize=12;fontStyle=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="670" y="60" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="fact_encounters" value="fact_encounters" style="ellipse;whiteSpace=wrap;html=1;fillColor=#095f7e;strokeColor=#0d2b39;fontColor=#ffffff;fontSize=12;fontStyle=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="250" y="300" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="fact_procedures" value="fact_procedures" style="ellipse;whiteSpace=wrap;html=1;fillColor=#095f7e;strokeColor=#0d2b39;fontColor=#ffffff;fontSize=12;fontStyle=1;shadow=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="500" width="130" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;endFill=1;strokeColor=#213245;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.15;entryY=0.15;entryDx=0;entryDy=0;" edge="1" parent="1" source="dim_payers" target="fact_encounters">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;endFill=1;strokeColor=#213245;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dim_patients" target="fact_encounters">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;endFill=1;strokeColor=#213245;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.85;entryY=0.15;entryDx=0;entryDy=0;" edge="1" parent="1" source="dim_encounter_date" target="fact_encounters">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;endFill=1;strokeColor=#213245;strokeWidth=2;exitX=0.85;exitY=0.85;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dim_patients" target="fact_procedures">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;endFill=1;strokeColor=#213245;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.85;entryY=0.15;entryDx=0;entryDy=0;" edge="1" parent="1" source="dim_procedure_date" target="fact_procedures">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=classic;endFill=1;strokeColor=#213245;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.15;entryY=0.15;entryDx=0;entryDy=0;" edge="1" parent="1" source="fact_encounters" target="fact_procedures">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="&lt;b&gt;Legend&lt;/b&gt;&amp;nbsp;&amp;nbsp; &amp;#9679; Dimension (navy) &amp;nbsp;&amp;nbsp; &amp;#9679; Fact (teal) &amp;nbsp;&amp;nbsp; arrow: build-order dependency (source built first)" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#213245;fillColor=#ffffff;strokeColor=#213245;spacingLeft=8;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="660" width="720" height="28" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

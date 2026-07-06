@@ -6,6 +6,10 @@ BEGIN
 	DECLARE @start_time DATETIME, @end_time DATETIME,@batch_start_time DATETIME, @batch_end_time DATETIME;
 	BEGIN TRY
 	SET @batch_start_time = GETDATE();
+		PRINT '******************************************************************';
+		PRINT 'Phase1:Bulk inserting into bronze schema from CSV files';
+		PRINT '******************************************************************';
+
 		PRINT '------------------------------------------------------------------';
 		PRINT 'Loading the CSVs into the bronze';
 		PRINT '------------------------------------------------------------------';
@@ -17,7 +21,7 @@ BEGIN
 		PRINT '------------------------------------------------------------------';
 		TRUNCATE TABLE bronze.encounters ;
 		BULK INSERT bronze.encounters 
-		FROM "C:\Users\user\Power BI projects\Massachussets_General_Hospital_Project\CSVs\encounters.csv"
+		FROM "C:\Massachussets_General_Hospital_Project\CSVs\encounters.csv"
 		WITH (
 			FIRSTROW = 2,
 			FIELDTERMINATOR = ',',
@@ -33,7 +37,7 @@ BEGIN
 		PRINT '------------------------------------------------------------------';
 		TRUNCATE TABLE bronze.patients ;
 		BULK INSERT bronze.patients 
-		FROM "C:\Users\user\Power BI projects\Massachussets_General_Hospital_Project\CSVs\patients.csv"
+		FROM "C:\Massachussets_General_Hospital_Project\CSVs\patients.csv"
 		WITH (
 			FIRSTROW = 2,
 			FIELDTERMINATOR = ',',
@@ -49,7 +53,7 @@ BEGIN
 		PRINT '------------------------------------------------------------------';
 		TRUNCATE TABLE bronze.payers ;
 		BULK INSERT bronze.payers 
-		FROM "C:\Users\user\Power BI projects\Massachussets_General_Hospital_Project\CSVs\payers.csv"
+		FROM "C:\Massachussets_General_Hospital_Project\CSVs\payers.csv"
 		WITH (
 			FIRSTROW = 2,
 			FIELDTERMINATOR = ',',
@@ -66,7 +70,7 @@ BEGIN
 		PRINT '------------------------------------------------------------------';
 		TRUNCATE TABLE bronze.procedures ;
 		BULK INSERT bronze.procedures
-		FROM "C:\Users\user\Power BI projects\Massachussets_General_Hospital_Project\CSVs\procedures.csv"
+		FROM "C:\Massachussets_General_Hospital_Project\CSVs\procedures.csv"
 		WITH (
 			FIRSTROW = 2,
 			FIELDTERMINATOR = ',',
@@ -80,6 +84,9 @@ BEGIN
 		PRINT 'batch loading is finished';
 		PRINT 'Batch Load Duration : ' + CAST(DATEDIFF(millisecond,@batch_start_time , @batch_end_time) AS VARCHAR) + ' millisecond'
 		PRINT '------------------------------------------------------------------'; 
+		PRINT '******************************************************************';
+		PRINT '******************************************************************';
+		PRINT '******************************************************************';
 		END TRY
 		BEGIN CATCH
 		PRINT 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';

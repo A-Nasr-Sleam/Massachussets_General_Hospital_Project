@@ -10,6 +10,9 @@ BEGIN
 	--payers table
 	--Implementing slowly changing dimension type 1
 	SET @start_time = GETDATE();
+	PRINT '******************************************************************';
+	PRINT 'Phase2:Data transformation and inserting in the silver schema';
+	PRINT '******************************************************************';
 	PRINT '--------------------------------------------------------------------------------------------';
 	PRINT '>> Implementing Slowly Changing Dimension type 1 In Table: silver.payers based on ID column'
 	PRINT '--------------------------------------------------------------------------------------------';
@@ -351,14 +354,16 @@ END
 	TransformedData AS (
 		SELECT 
 			TRIM(b.Id) AS encounter_id,
-			b.START,
-			b.STOP,
+			b.START AS encounter_start,
+			b.STOP AS encounter_stop,
+			CONVERT(INT, FORMAT(b.START, 'yyyyMMdd')) AS date_key,
 			CASE 
 				WHEN b.DurationMinutes > @encounter_duration_upper_limit THEN @encounter_duration_upper_limit
 				WHEN b.DurationMinutes < 0 THEN 1
 				ELSE b.DurationMinutes 
 			END AS encounter_duration_MIN,
 			patient.patient_key AS patient_key,
+			DATEDIFF(YEAR, patient.birth_date, b.START) AS patient_age_ED,
 			b.ORGANIZATION AS organization,
 			payer.payer_key AS payer_key,
 			CASE 
@@ -368,9 +373,27 @@ END
 			END AS encounterclass,
 			TRIM(b.CODE) AS encounter_code,
 			cd.DESCRIPTION AS encounter_description,
-			b.BASE_ENCOUNTER_COST AS base_encounter_cost,
-			b.TOTAL_CLAIM_COST AS total_claim_cost,
-			b.PAYER_COVERAGE AS payer_coverage,
+			CASE 
+			--check if there are negative or zero base encounter cost values
+			--and replace them with 1
+				WHEN b.BASE_ENCOUNTER_COST <= 0 THEN 1
+				ELSE b.BASE_ENCOUNTER_COST
+			END AS base_encounter_cost,
+			CASE 
+				--check if there are negative or zero total claim cost values
+				--and replace them with 1
+				WHEN b.TOTAL_CLAIM_COST <= 0 THEN 1
+				ELSE b.TOTAL_CLAIM_COST
+			END AS total_claim_cost,
+			CASE 
+				--check if there are negative or zero payer coverage values
+				--and replace them with 1
+				WHEN b.PAYER_COVERAGE <= 0 THEN 1
+				--check if the payer coverage is greater than total claim cost
+				-- and replace it with total claim cost
+				WHEN b.PAYER_COVERAGE > b.TOTAL_CLAIM_COST THEN b.TOTAL_CLAIM_COST
+				ELSE b.PAYER_COVERAGE
+			END AS payer_coverage,
 			COALESCE(b.REASONCODE, 'Unknown') AS reason_code,
 			COALESCE(b.REASONDESCRIPTION, 'Unknown') AS reason_description
 		FROM CleanBronzeEncounters b
@@ -381,10 +404,12 @@ END
 	-- 3. Execute the safe incremental insert
 	INSERT INTO silver.encounters (
 		encounter_id,
-		start,
-		stop,
+		encounter_start,
+		encounter_stop,
+		date_key,
 		encounter_duration_MIN,
 		patient_key,
+		patient_age_ED,
 		organization,
 		payer_key,
 		encounterclass,
@@ -399,10 +424,12 @@ END
 	)
 	SELECT 
 		src.encounter_id,
-		src.START,
-		src.STOP,
+		src.encounter_start,
+		src.encounter_stop,
+		src.date_key,
 		src.encounter_duration_MIN,
 		src.patient_key,
+		src.patient_age_ED,
 		src.organization,
 		src.payer_key,
 		src.encounterclass,
@@ -495,29 +522,41 @@ END
 	),
 	TransformedData AS (
 		SELECT 
-			p.START AS [start],
-			p.STOP AS [stop],
+		p.START AS [procedure_start],
+		p.STOP AS [procedure_stop],
+		CONVERT(INT, FORMAT(p.START, 'yyyyMMdd')) AS date_key,
 			CASE 
 				WHEN p.DurationMinutes > @procedure_duration_upper_limit THEN @procedure_duration_upper_limit
 				WHEN p.DurationMinutes < 0 THEN 1
 				ELSE p.DurationMinutes 
 			END AS procedure_duration_MIN,
 			patient.patient_key AS patient_key,
+			DATEDIFF(YEAR, patient.birth_date, p.START) AS patient_age_PD,
 			TRIM(p.CODE) AS procedure_code,
 			cd.DESCRIPTION AS procedure_description,
-			CAST(p.BASE_COST AS INT) AS base_procedure_cost,
-			COALESCE(p.REASONCODE, 'Unknown') AS reason_code,
-			COALESCE(p.REASONDESCRIPTION, 'Unknown') AS reason_description
-		FROM CleanBronzeProcedures p
-		INNER JOIN code_description cd ON cd.CODE = p.CODE
-		INNER JOIN silver.patients patient ON patient.patient_id = p.PATIENT
+			CASE 
+				--check if there are negative or zero base procedure cost values
+				--and replace them with 1
+				WHEN CAST(p.BASE_COST AS INT) <= 0 THEN 1
+				ELSE CAST(p.BASE_COST AS INT)
+			END AS base_procedure_cost,
+		COALESCE(p.REASONCODE, 'Unknown') AS reason_code,
+		COALESCE(p.REASONDESCRIPTION, 'Unknown') AS reason_description,
+		encounter.encounter_key AS encounter_key
+	FROM CleanBronzeProcedures p
+	INNER JOIN code_description cd ON cd.CODE = p.CODE
+	INNER JOIN silver.patients patient ON patient.patient_id = p.PATIENT
+	INNER JOIN silver.encounters encounter ON encounter.encounter_id = TRIM(p.ENCOUNTER)
 	)
 	-- 4. Execute the safe insert
 	INSERT INTO silver.procedures (
-		[start],
-		[stop],
+		procedure_start,
+		procedure_stop,
+		date_key,
 		procedure_duration_MIN,
 		patient_key,
+		patient_age_PD,
+		encounter_key,
 		procedure_code,
 		procedure_description,
 		base_procedure_cost,
@@ -525,10 +564,13 @@ END
 		reason_description
 	)
 	SELECT 
-		src.[start],
-		src.[stop],
+		src.[procedure_start],
+		src.[procedure_stop],
+		src.date_key,
 		src.procedure_duration_MIN,
 		src.patient_key,
+		src.patient_age_PD,
+		src.encounter_key,
 		src.procedure_code,
 		src.procedure_description,
 		src.base_procedure_cost,
@@ -545,6 +587,9 @@ END
 		PRINT 'batch loading is finished';
 		PRINT 'Batch Load Duration : ' + CAST(DATEDIFF(millisecond,@batch_start_time , @batch_end_time) AS VARCHAR) + ' millisecond'
 		PRINT '------------------------------------------------------------------'; 
+		PRINT '******************************************************************'
+		PRINT '******************************************************************'
+		PRINT '******************************************************************'
 		END TRY
 		BEGIN CATCH
 		PRINT 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';

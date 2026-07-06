@@ -123,7 +123,11 @@ WHERE CODE IN
 )
 ORDER BY CODE
 
---
+--Is there PAYER_COVERAGE more than TOTAL_CLAIM_COST?
+SELECT  PAYER_COVERAGE,TOTAL_CLAIM_COST ,TOTAL_CLAIM_COST-PAYER_COVERAGE
+FROM bronze.encounters
+WHERE TOTAL_CLAIM_COST-PAYER_COVERAGE < 0
+--No!!!!
 --------------------------------------------------------------------------------------------------
 --testing bronze.patients table
 SELECT TOP(20) *
@@ -259,3 +263,49 @@ FROM bronze.procedures
 ORDER BY dedupe_flag DESC
 
 --There are no duplicates in the procedures table
+
+
+----------------------------------------------------------
+--silver layer
+SELECT TOP 100 * 
+FROM silver.payers
+
+SELECT TOP 100 *
+FROM silver.encounters
+
+SELECT TOP 100 * 
+FROM silver.procedures
+
+
+-------------------------------------------------------------
+--gold layer
+SELECT TOP 100 *
+FROM gold.fact_procedures
+
+------------------------------------------------------------- 
+--the final views
+USE hospital_db;
+GO
+-- 1. Preview Payers Dimension
+SELECT TOP 100 * 
+FROM gold.vw_dim_payers;
+
+-- 2. Preview Patients Dimension
+SELECT TOP 100 * 
+FROM gold.vw_dim_patients;
+
+-- 3. Preview Encounter Dates Dimension
+SELECT TOP 100 * 
+FROM gold.vw_dim_encounter_date;
+
+-- 4. Preview Procedure Dates Dimension
+SELECT TOP 100 * 
+FROM gold.vw_dim_procedure_date;
+
+-- 5. Preview Encounters Fact
+SELECT TOP 100 * 
+FROM gold.vw_fact_encounters;
+
+-- 6. Preview Procedures Fact
+SELECT TOP 100 * 
+FROM gold.vw_fact_procedures;
