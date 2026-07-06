@@ -3,7 +3,7 @@ $ServerName   = "localhost\MSSQLSERVER01"
 $DatabaseName = "msdb"  
 $JobName      = "Schedule refresh for hospital_db"
 
-# 🔥 CRITICAL PATH: Define the exact location where SQL Agent saves the file 
+# CRITICAL PATH: Define the exact location where SQL Agent saves the file 
 # Make sure this matches the path you configured in SSMS Job Step Advanced Options!
 $LogFilePath  = "C:\Massachussets_General_Hospital_Project\Refreshing the data warehouse\agent_output"
 $StartJobQuery = "EXEC dbo.sp_start_job @job_name = '$JobName';"
@@ -20,7 +20,7 @@ ORDER BY h.instance_id DESC;
 Write-Host "Connecting to $ServerName..." -ForegroundColor Cyan
 Write-Host "Triggering SQL Agent Job: [$JobName]..." -ForegroundColor Yellow
 
-# 🔥 Pre-execution cleanup: Clear old log data if the file already exists
+#  Pre-execution cleanup: Clear old log data if the file already exists
 if (Test-Path $LogFilePath) { Clear-Content $LogFilePath -ErrorAction SilentlyContinue }
 
 try {
@@ -50,10 +50,10 @@ try {
             if ($RunStatus -eq 1 -or $RunStatus -eq 0) {
                 
                 if ($RunStatus -eq 1) {
-                    Write-Host "`n✅ DATA REFRESH COMPLETE!`n" -ForegroundColor Green
+                    Write-Host "DATA REFRESH COMPLETE!" -ForegroundColor Green
                     Write-Host "--- SERVER MESSAGES ---" -ForegroundColor Gray
                     
-                    # 🔥 Read directly from the physical file to bypass SQL's truncation limit
+                    #Read directly from the physical file to bypass SQL's truncation limit
                     if (Test-Path $LogFilePath) {
                         $RawContent = Get-Content -Path $LogFilePath -Raw
                         $RawLines = $RawContent -split '\[SQLSTATE \d+\] \(Message \d+\)|\r?\n'
@@ -82,13 +82,13 @@ try {
                             }
                         }
                     } else {
-                        Write-Host "⚠️ Log file not found at $LogFilePath." -ForegroundColor DarkYellow
+                        Write-Host "Log file not found at $LogFilePath." -ForegroundColor DarkYellow
                         Write-Host "Ensure 'Include step output in history' and 'Output file' are set in SSMS." -ForegroundColor Gray
                     }
                 }
 
                 else {
-                    Write-Host "`n❌ JOB FAILED ON SERVER!`n" -ForegroundColor Red
+                    Write-Host "JOB FAILED ON SERVER!" -ForegroundColor Red
                     Write-Host "--- SERVER ERROR LOGS ---" -ForegroundColor LightRed
                     
                     if (Test-Path $LogFilePath) {
@@ -100,7 +100,7 @@ try {
                             }
                         }
                     } else {
-                        Write-Host "⚠️ Log file not found at $LogFilePath." -ForegroundColor DarkYellow
+                        Write-Host "Log file not found at $LogFilePath." -ForegroundColor DarkYellow
                     }
                 }
                 
@@ -120,7 +120,7 @@ try {
     $Connection.Close()
 }
 catch {
-    Write-Host "❌ Error: Failed to monitor the SQL Server job." -ForegroundColor Red
+    Write-Host "Error: Failed to monitor the SQL Server job." -ForegroundColor Red
     Write-Error $_.Exception.Message
     if ($Connection.State -eq "Open") { $Connection.Close() }
 }

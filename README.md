@@ -13,6 +13,7 @@ This end-to-end data warehousing and analytics project transforms raw healthcare
 ## 🛠️ Tech Stack
 
 * **Database:** Microsoft SQL Server
+* **Automation:** SQL Server Agent, PowerShell
 * **BI Tool:** Power BI
 * **Analytics:** Advanced SQL
 * **Data Science:** Python (Pandas, NumPy, Scikit-learn, Statsmodels, Seaborn)
@@ -28,7 +29,9 @@ This phase focuses on building a scalable infrastructure to handle complex healt
 * **Data Modeling:** Designed a robust star schema optimized for analytical queries.
 * **Schema Design:** Implemented Fact and Dimension tables (e.g., `fact_encounters`, `dim_patients`, `dim_procedure_date`).
 * **ETL Pipeline:** Cleaned, transformed, and loaded raw source data into the staging and production environments.
-* **Integrity:** Enforced primary keys, foreign keys, and data validation rules.
+* **Automated Scheduled Refresh:** Configured **SQL Server Agent Jobs** to orchestrate daily ETL runs, scheduled to execute automatically every morning at **4:00 AM EEST**.
+
+* **On-Demand Manual Refresh:** Developed a robust **PowerShell script** that communicates with the SQL Server instance via .NET SQL Client objects.
 
 ### Phase 2: Power BI Interactive Dashboards
 
