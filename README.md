@@ -12,7 +12,7 @@ This end-to-end data warehousing and analytics project transforms raw healthcare
 
 ## 🛠️ Tech Stack
 
-* **Database:** Microsoft SQL Server / PostgreSQL (Specify your SQL dialect)
+* **Database:** Microsoft SQL Server
 * **BI Tool:** Power BI
 * **Analytics:** Advanced SQL
 * **Data Science:** Python (Pandas, NumPy, Scikit-learn, Statsmodels, Seaborn)
@@ -26,7 +26,7 @@ This end-to-end data warehousing and analytics project transforms raw healthcare
 This phase focuses on building a scalable infrastructure to handle complex healthcare data.
 
 * **Data Modeling:** Designed a robust star schema optimized for analytical queries.
-* **Schema Design:** Implemented Fact and Dimension tables (e.g., `fact_encounters`, `dim_patients`, `dim_payers`).
+* **Schema Design:** Implemented Fact and Dimension tables (e.g., `fact_encounters`, `dim_patients`, `dim_procedure_date`).
 * **ETL Pipeline:** Cleaned, transformed, and loaded raw source data into the staging and production environments.
 * **Integrity:** Enforced primary keys, foreign keys, and data validation rules.
 
