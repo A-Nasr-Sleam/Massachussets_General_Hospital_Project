@@ -1,11 +1,11 @@
 <mxfile host="Electron">
   <diagram name="Gold Layer Star Schema" id="gold-star-schema">
-    <mxGraphModel dx="1628" dy="1963" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="1000" background="#f4f4f4" math="0" shadow="0">
+    <mxGraphModel dx="1763" dy="1870" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="583" pageHeight="827" background="#f4f4f4" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="patients" parent="1" style="shape=table;startSize=34;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#213245;strokeColor=#19202a;fontColor=#ffffff;fontSize=13;verticalAlign=middle;shadow=1;" value="dim_patients (gold)" vertex="1">
-          <mxGeometry height="372" width="210" x="420" y="90" as="geometry" />
+          <mxGeometry height="372" width="210" x="430" y="-670" as="geometry" />
         </mxCell>
         <mxCell id="patients__patient_key__row" parent="patients" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=#19202a;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
           <mxGeometry height="26" width="210" y="34" as="geometry" />
@@ -177,7 +177,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="proc_date" parent="1" style="shape=table;startSize=34;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#213245;strokeColor=#19202a;fontColor=#ffffff;fontSize=13;verticalAlign=middle;shadow=1;" value="dim_procedure_date (gold)" vertex="1">
-          <mxGeometry height="216" width="210" x="95" y="310" as="geometry" />
+          <mxGeometry height="216" width="210" x="110" y="-640" as="geometry" />
         </mxCell>
         <mxCell id="proc_date__date_key__row" parent="proc_date" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=#19202a;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
           <mxGeometry height="26" width="210" y="34" as="geometry" />
@@ -271,7 +271,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="enc_date" parent="1" style="shape=table;startSize=34;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#213245;strokeColor=#19202a;fontColor=#ffffff;fontSize=13;verticalAlign=middle;shadow=1;" value="dim_encounter_date (gold)" vertex="1">
-          <mxGeometry height="216" width="210" x="700" y="490" as="geometry" />
+          <mxGeometry height="216" width="210" x="750" y="-500" as="geometry" />
         </mxCell>
         <mxCell id="enc_date__date_key__row" parent="enc_date" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=#19202a;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
           <mxGeometry height="26" width="210" y="34" as="geometry" />
@@ -365,7 +365,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="payers" parent="1" style="shape=table;startSize=34;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#213245;strokeColor=#19202a;fontColor=#ffffff;fontSize=13;verticalAlign=middle;shadow=1;" value="dim_payers (gold)" vertex="1">
-          <mxGeometry height="138" width="210" x="700" y="750" as="geometry" />
+          <mxGeometry height="138" width="210" x="750" y="-100" as="geometry" />
         </mxCell>
         <mxCell id="payers__payer_key__row" parent="payers" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=#19202a;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
           <mxGeometry height="26" width="210" y="34" as="geometry" />
@@ -420,7 +420,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="fact_proc" parent="1" style="shape=table;startSize=34;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#095f7e;strokeColor=#0d2b39;fontColor=#ffffff;fontSize=13;verticalAlign=middle;shadow=1;" value="fact_procedures (gold)" vertex="1">
-          <mxGeometry height="372" width="220" x="90" y="579" as="geometry" />
+          <mxGeometry height="372" width="220" x="120" y="-350" as="geometry" />
         </mxCell>
         <mxCell id="fact_proc__procedure_key__row" parent="fact_proc" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=#0d2b39;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
           <mxGeometry height="26" width="220" y="34" as="geometry" />
@@ -592,7 +592,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="fact_enc" parent="1" style="shape=table;startSize=34;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#095f7e;strokeColor=#0d2b39;fontColor=#ffffff;fontSize=13;verticalAlign=middle;shadow=1;" value="fact_encounters (gold)" vertex="1">
-          <mxGeometry height="450" width="230" x="420" y="510" as="geometry" />
+          <mxGeometry height="450" width="230" x="420" y="-280" as="geometry" />
         </mxCell>
         <mxCell id="fact_enc__encounter_key__row" parent="fact_enc" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=#0d2b39;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;" value="" vertex="1">
           <mxGeometry height="26" width="230" y="34" as="geometry" />
@@ -805,59 +805,58 @@
         <mxCell id="rel0" edge="1" parent="1" source="patients__patient_key__row" style="edgeStyle=none;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="fact_enc__patient_key__row">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="380" y="137" />
-              <mxPoint x="380" y="687" />
+              <mxPoint x="400" y="-623" />
+              <mxPoint x="400" y="-103" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="rel1" edge="1" parent="1" source="patients__patient_key__row" style="edgeStyle=none;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="fact_proc__patient_key__row">
+        <mxCell id="rel1" edge="1" parent="1" style="edgeStyle=none;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="fact_proc__patient_key__row">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="360" y="137" />
-              <mxPoint x="360" y="756" />
+              <mxPoint x="380" y="-620" />
+              <mxPoint x="380" y="-173" />
             </Array>
-            <mxPoint x="460" y="90" as="sourcePoint" />
+            <mxPoint x="430" y="-620" as="sourcePoint" />
             <mxPoint x="330" y="745" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="rel2" edge="1" parent="1" source="proc_date__date_key__row" style="edgeStyle=none;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="fact_proc__date_key__row">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="40" y="357" />
-              <mxPoint x="40" y="704" />
+              <mxPoint x="40" y="-593" />
+              <mxPoint x="40" y="-225" />
+              <mxPoint x="80" y="-225" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="rel3" edge="1" parent="1" source="enc_date__date_key__row" style="edgeStyle=none;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="fact_enc__date_key__row">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="670" y="537" />
-              <mxPoint x="670" y="635" />
+              <mxPoint x="700" y="-453" />
+              <mxPoint x="700" y="-155" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="rel4" edge="1" parent="1" source="payers__payer_key__row" style="edgeStyle=none;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" target="fact_enc__payer_key__row">
           <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="670" y="800" />
-              <mxPoint x="670" y="739" />
-            </Array>
+            <Array as="points" />
             <mxPoint x="690" y="820" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="rel5" edge="1" parent="1" source="fact_enc__encounter_key__row" style="edgeStyle=none;fontSize=12;html=1;endArrow=ERmany;startArrow=ERone;rounded=0;strokeColor=#213245;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="fact_proc__encounter_key__row">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="390" y="557" />
-              <mxPoint x="390" y="808" />
+              <mxPoint x="390" y="-233" />
+              <mxPoint x="390" y="-120" />
+              <mxPoint x="370" y="-121" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="title" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=22;fontStyle=1;fontColor=#213245;" value="Massachusetts General Hospital &amp;#8212; Gold Layer Star Schema" vertex="1">
-          <mxGeometry height="40" width="760" x="40" y="-30" as="geometry" />
+          <mxGeometry height="40" width="760" x="50" y="-790" as="geometry" />
         </mxCell>
         <mxCell id="legend" parent="1" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#213245;fillColor=#f4f4f4;strokeColor=#213245;spacingLeft=8;rounded=1;" value="&lt;b&gt;Legend&lt;/b&gt;&amp;nbsp; &amp;#9632; Dimension (navy) &amp;nbsp; &amp;#9632; Fact (teal) &amp;nbsp; PK = Primary Key &amp;nbsp; FK = Foreign Key" vertex="1">
-          <mxGeometry height="28" width="620" x="40" y="20" as="geometry" />
+          <mxGeometry height="28" width="620" x="60" y="-740" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

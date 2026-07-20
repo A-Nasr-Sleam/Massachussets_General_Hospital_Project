@@ -1,6 +1,6 @@
 <mxfile host="Electron">
   <diagram name="Page-1" id="7KRifTNmhfS79vcvGe9k">
-    <mxGraphModel dx="1176" dy="696" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1250" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1176" dy="696" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="583" pageHeight="413" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -11,7 +11,7 @@
           <mxGeometry height="440" width="160" x="250" y="230" as="geometry" />
         </mxCell>
         <mxCell id="sMrIIVQ76radw1M1d-wC-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;align=left;fontColor=#213245;" value="&lt;b&gt;&lt;font style=&quot;font-size: 20px;&quot;&gt;Data Flow Diagram&lt;/font&gt;&lt;/b&gt;" vertex="1">
-          <mxGeometry height="60" width="280" x="40" y="110" as="geometry" />
+          <mxGeometry height="60" width="280" x="40" y="80" as="geometry" />
         </mxCell>
         <mxCell id="sMrIIVQ76radw1M1d-wC-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;dashed=1;strokeColor=#213245;align=left;" value="&lt;blockquote style=&quot;margin: 0px 0px 0px 40px; border: none; padding: 0px; line-height: 150%;&quot;&gt;&lt;br&gt;&lt;/blockquote&gt;" vertex="1">
           <mxGeometry height="440" width="160" x="20" y="230" as="geometry" />
@@ -97,7 +97,7 @@
         <mxCell id="g_container" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=default;dashed=1;strokeColor=#213245;" value="" vertex="1">
           <mxGeometry height="440" width="440" x="700" y="230" as="geometry" />
         </mxCell>
-        <mxCell id="g_label" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=none;fontColor=#213245;fontStyle=1;align=center;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Gold layer&lt;/font&gt;" vertex="1">
+        <mxCell id="g_label" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=default;strokeColor=none;fontColor=#213245;fontStyle=1;align=center;" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Gold layer&lt;/font&gt;" vertex="1">
           <mxGeometry height="40" width="120" x="860" y="210" as="geometry" />
         </mxCell>
         <mxCell id="g_icon" parent="1" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/database_partition_4.svg;fontColor=#213245;" value="Database :hospital_db" vertex="1">

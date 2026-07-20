@@ -33,14 +33,20 @@ This phase focuses on building a scalable infrastructure to handle complex healt
 
 * **On-Demand Manual Refresh:** Developed a robust **PowerShell script** that communicates with the SQL Server instance via .NET SQL Client objects.
 
-### Phase 2: Power BI Interactive Dashboards
+### Phase 2: Power BI Interactive Report
 
 This phase translates complex data points into intuitive visual stories for hospital stakeholders.
 
 * **Data Connectivity:**.
-* **DAX Modeling:**.
+Connecting to the data warehouse (SQL Server) through Power BI SQL Server connector, and configured on-premisis data gateway to connect to the service.
+
+* **Data Modeling:**.
+Creating the appropriate relashionships between tables,marking dim_encounter_data and dim_procedure_date as date table for efficient data functions performance,Creating Dax Measures for advanced calculations and better user experiance.
+
 * **Visualizations:**.
+Selecting the appropriate visual for each measure, creating visual tooltips to avoid clutter, optmizing visual elements.
 * **User Experience:**.
+Creating page navigator, visual navigator, interactive filter panel, visually appealing visuals ,and using the organization theme.
 
 ### Phase 3: Advanced SQL Analytical Queries
 
